@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private float spd;
     private Vector2 curPos;
 
+    public static float x, y;
+
 
     void Start()
     {
@@ -22,8 +24,8 @@ public class Player : MonoBehaviour
 
     private void Move() //¿Ãµø
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        y = Input.GetAxisRaw("Vertical");
+        x = Input.GetAxisRaw("Horizontal");
         Vector3 playerVec = new Vector3(x, y, 0);
         transform.position += playerVec * spd * Time.deltaTime;
     }

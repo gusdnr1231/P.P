@@ -6,18 +6,17 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField]
     private float spd;
-
-    void Start()
-    {
-        
-    }
+    
 
     void Update()
     {
-        transform.position += Vector3.up * spd * Time.deltaTime;
+
+        transform.Translate(new Vector2(1, 0)* spd * Time.deltaTime);
+
     }
 
-    
+
+
 
 
 
