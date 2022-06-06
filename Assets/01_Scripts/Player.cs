@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
 
     private void Move() //¿Ãµø
     {
-        y = Input.GetAxisRaw("Vertical");
         x = Input.GetAxisRaw("Horizontal");
+        y = Input.GetAxisRaw("Vertical");
         Vector3 playerVec = new Vector3(x, y, 0);
         transform.position += playerVec * spd * Time.deltaTime;
     }
