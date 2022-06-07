@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class GMControl : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Bullet;
-    []
+    private GameObject bullet;
+    [SerializeField]
+    private Text b_text;
 
     void Start()
     {
