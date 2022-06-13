@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class BossMove : MonoBehaviour
 {
-    float timer = 0;
     float r;
     private Quaternion dir;
     [SerializeField] StageData stageData;
-    float count = 0;
+    public float count = 0;
 
     void Start()
     {
