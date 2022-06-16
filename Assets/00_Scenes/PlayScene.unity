@@ -289,6 +289,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6668887007433316218, guid: 5e17cbbd7b3cefa4599df068ba426c11, type: 3}
+  LazerRange: {fileID: 4282748368985066322, guid: fa46cd9e08cad9d4dbe406ed7944613c, type: 3}
+  Lazer: {fileID: 198794061930451926, guid: e42b142eaebd6e545a7140f60dd305b5, type: 3}
+  stageData: {fileID: 0}
 --- !u!114 &22188155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bd5f24c9eb33a438adef2bf41b28be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossAppearPoint: 5
 --- !u!114 &22188156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,7 +1306,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.06794548, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
