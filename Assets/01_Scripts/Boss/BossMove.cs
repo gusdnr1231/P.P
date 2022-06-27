@@ -9,16 +9,13 @@ public class BossMove : MonoBehaviour
     [SerializeField] StageData stageData;
     public float count = 0;
 
+    BossManager bm;
+
     void Start()
     {
+        bm = GetComponent<BossManager>();
         dir = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
-        r = Random.Range(5, 10);
-        Debug.Log(r);
         StartCoroutine(cool());
-    }
-
-    void Update()
-    {
     }
 
     IEnumerator Move()
@@ -51,13 +48,13 @@ public class BossMove : MonoBehaviour
 
     IEnumerator cool()
 	{
-
 		while (true)
 		{
-            yield return new WaitForSeconds(r);
-            yield return StartCoroutine(Move());
-            r = Random.Range(5, 10);
-            Debug.Log(r);
+            if (bm.patternCount == 4)
+			{
+                bm.patternCount = 0;
+                yield return StartCoroutine(Move());
+			}
 		}
 
     }

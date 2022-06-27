@@ -18,7 +18,7 @@ public class Fire : MonoBehaviour
         if (Reload.curAmmo > 0)
         {
             Reload.curAmmo--;
-            Instantiate(bullet, transform.position, dir);
+            Instantiate(bullet, transform.position, Quaternion.identity);
         }
     }
     private void Rotate() //위 아래로 총알 발사 가능

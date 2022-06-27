@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossHP : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class BossHP : MonoBehaviour
         if (curHP <= 0)
         {
             Debug.Log("º¸½º »ç¸Á");
+            SceneManager.LoadScene("GameClear");
         }
     }
 

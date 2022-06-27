@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,11 +10,22 @@ public class Player : MonoBehaviour
     private Vector2 curPos;
 
     public static float x, y;
+    SpriteRenderer spriteRenderer;
 
+    int score;
+    public int Score
+	{
+        set => score = Mathf.Max(0, value);
+        get { return score; }
+	}
 
-    void Start()
+    [SerializeField]private float maxHP;
+    float curHP;
+
+    void Awake()
     {
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        curHP = maxHP;
     }
 
     void Update()
@@ -33,10 +45,29 @@ public class Player : MonoBehaviour
     private void Clamp() //이동 범위 제한
     {
         curPos = transform.position;
-        curPos.x = Mathf.Clamp(curPos.x, -7, 7);
-        curPos.y = Mathf.Clamp(curPos.y,-4, 4);
+        curPos.x = Mathf.Clamp(curPos.x, -7.85f, 7.85f);
+        curPos.y = Mathf.Clamp(curPos.y,-4.85f, 4.85f);
         transform.position = curPos;
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BossBullet"))
+        {
+            curHP--;
+            Destroy(collision.gameObject);
+            StopCoroutine("HitColorAnime");
+			StartCoroutine("HitColorAnime");
+			if(curHP == 0)
+			{
+                SceneManager.LoadScene("GameOver");
+			}
+        }
+    }
+    IEnumerator HitColorAnime()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.3f);
+        spriteRenderer.color = Color.white;
+    }
 }

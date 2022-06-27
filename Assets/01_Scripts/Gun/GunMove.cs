@@ -11,7 +11,6 @@ public class GunMove : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     
@@ -24,7 +23,6 @@ public class GunMove : MonoBehaviour
         }
         Clamp();
     }
-
     private void Clamp() //이동 범위 제한
     {
         curPos = transform.position;
@@ -32,4 +30,10 @@ public class GunMove : MonoBehaviour
         curPos.y = Mathf.Clamp(curPos.y, -4, 4);
         transform.position = curPos;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BossBullet"))
+            Destroy(collision.gameObject);
+    }
+
 }

@@ -10,10 +10,17 @@ public class Bullet : MonoBehaviour
     private float dmg;
     [SerializeField]
     StageData stageData;
+    Player player;
 
-    void Update()
+	private void Awake()
+	{
+		player = GetComponent<Player>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+    }
+
+	void Update()
     {
-        transform.Translate(Vector2.right * spd * Time.deltaTime);
+        transform.Translate(Vector2.up * spd * Time.deltaTime);
         if (stageData.LimitMax.x + 2 < transform.position.x ||
             stageData.LimitMin.x - 2 > transform.position.x ||
             stageData.LimitMax.y + 2 < transform.position.y ||
@@ -26,6 +33,7 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Boss"))
         {
             collision.GetComponent<BossHP>().TakeDamage(dmg);
+            player.Score += 100;
             Destroy(gameObject);
         }
     }
